@@ -16,6 +16,6 @@ OMZ="https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
 
 [ ! -d $HOME/.oh-my-zsh ] && RUNZSH=no sh -c "$(curl -fsSL $OMZ)" && rm $HOME/.zshrc
 
-for m in zsh; do
+for m in zsh git tmux; do
     _stow "$m"
 done

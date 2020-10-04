@@ -20,11 +20,13 @@ git clone git@github.com:seebi/tmux-colors-solarized.git ~/.tmux/plugins/tmux-co
 git clone git@github.com:tmux-plugins/tmux-resurrect.git ~/.tmux/plugins/tmux-resurrect 
 git clone git@github.com:tmux-plugins/tmux-continuum.git ~/.tmux/plugins/tmux-continuum 
 git clone git@github.com:erikw/tmux-powerline.git ~/.tmux/bin/tmux-powerline
+rm ~/.tmux/bin/tmux-powerline/theme/default.sh
+cp ./powerline/default.sh ~/.tmux/bin/tmux-powerline/theme/default.sh
 ~/.tmux/plugins/tpm/bin/install_plugins
 
 # Fix fonts
-curl https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf -o PowerlineSymbols.otf
-curl https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf -o 10-powerline-symbols.conf
+curl -L https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf -o PowerlineSymbols.otf
+curl -L https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf -o 10-powerline-symbols.conf
 
 mkdir -p ~/.local/share/fonts
 mv PowerlineSymbols.otf ~/.local/share/fonts/

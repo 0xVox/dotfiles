@@ -23,8 +23,8 @@ git clone git@github.com:erikw/tmux-powerline.git ~/.tmux/bin/tmux-powerline
 ~/.tmux/plugins/tpm/bin/install_plugins
 
 # Fix fonts
-wget https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf
-wget https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf
+curl https://github.com/powerline/powerline/raw/develop/font/PowerlineSymbols.otf -o PowerlineSymbols.otf
+curl https://github.com/powerline/powerline/raw/develop/font/10-powerline-symbols.conf -o 10-powerline-symbols.conf
 
 mkdir -p ~/.local/share/fonts
 mv PowerlineSymbols.otf ~/.local/share/fonts/

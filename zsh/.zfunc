@@ -1,0 +1,4 @@
+git-public-config() {
+    git config user.email "tom.brew3@gmail.com"
+    git config user.name "0xVox"
+}

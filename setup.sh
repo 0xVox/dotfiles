@@ -12,7 +12,7 @@ export PATH=$PATH:$HOME/bin
 
 # Install ZSH and tools
 echo "Installing requirments"
-sudo apt install zsh direnv stow tmux git
+sudo apt install zsh direnv stow tmux git xclip
 
 # Switch shell to zsh
 echo "Switching default shell to zshell"

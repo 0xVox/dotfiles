@@ -18,6 +18,9 @@ sudo apt install zsh direnv stow tmux git xclip
 echo "Switching default shell to zshell"
 chsh -s $(which zsh)
 
+# init the hist dir
+mkdir ~/.hist
+
 # Tmux plugins
 echo "Installing TMux + Plugins + Statusline"
 mkdir -p ~/.tmux/plugins/tpm

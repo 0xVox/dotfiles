@@ -2,10 +2,6 @@
 	editor = vim
 	abbrev = 12
 
-[user]
-    email = tom.brew3@gmail.com
-    name = 0xVox
-
 [color]
 	ui = auto
 
@@ -94,5 +90,8 @@
 	# tag
 	t = tag
 
-    # Hurry up!
-    psom = push --set-upstream origin master
+  # Hurry up!
+  psom = push --set-upstream origin master
+
+  # Hurry Up More!
+  pso = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""

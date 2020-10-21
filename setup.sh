@@ -18,6 +18,9 @@ sudo apt install zsh direnv stow tmux git xclip
 echo "Switching default shell to zshell"
 chsh -s $(which zsh)
 
+# init the hist dir
+mkdir ~/.hist
+
 # Tmux plugins
 echo "Installing TMux + Plugins + Statusline"
 mkdir -p ~/.tmux/plugins/tpm
@@ -38,6 +41,7 @@ mv PowerlineSymbols.otf ~/.local/share/fonts/
 mv 10-powerline-symbols.conf ~/.config/fontconfig/conf.d/
 fc-cache -vf ~/.local/share/fonts/
 
+# Oh My ZSH!
 echo "Installing OMZ"
 OMZ="https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh"
 
@@ -51,5 +55,10 @@ for m in zsh git tmux; do
     _stow "$m"
 done
 
+# Vim bits
+
+# Vim-plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo "If this is your first run - logout and in again to set zsh to default."

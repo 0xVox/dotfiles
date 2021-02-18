@@ -67,4 +67,13 @@ export QUOTING_STYLE=shell
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-if [ -e /home/t/.nix-profile/etc/profile.d/nix.sh ]; then . /home/t/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# The next line updates PATH for kubectl krew
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/tom/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/tom/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/tom/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/tom/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -e /home/tom/.nix-profile/etc/profile.d/nix.sh ]; then . /home/tom/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

@@ -1,3 +1,6 @@
+if [ -z $DISPLAY ] && [ "$(tty)" == "/dev/tty1" ]; then
+  exec sway
+fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -64,3 +67,4 @@ export QUOTING_STYLE=shell
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+if [ -e /home/t/.nix-profile/etc/profile.d/nix.sh ]; then . /home/t/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

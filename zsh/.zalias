@@ -1,3 +1,4 @@
 # General aliases
 
+alias vim='nvim'
 alias watch='watch '

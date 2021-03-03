@@ -61,3 +61,6 @@ export PATH=$PATH:/usr/local/go/bin
 export GOROOT=/usr/local/go
 export GOPATH=${HOME}/go
 export PATH=$PATH:$GOPATH/bin
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/kustomize kustomize
+if [ -e /home/t/.nix-profile/etc/profile.d/nix.sh ]; then . /home/t/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

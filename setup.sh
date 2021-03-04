@@ -62,5 +62,4 @@ tar zxvf krew.tar.gz &&
 KREW=./krew-"$(uname | tr '[:upper:]' '[:lower:]')_$(uname -m | sed -e 's/x86_64/amd64/' -e 's/arm.*$/arm/')" &&
 "$KREW" install krew
 
-
 echo "If this is your first run - logout and in again to set zsh to default."

@@ -55,6 +55,7 @@ export QUOTING_STYLE=shell
 [[ -f ${HOME}/.zalias && -r ${HOME}/.zalias ]] && { source ${HOME}/.zalias; }
 [[ -f ${HOME}/.zkube && -r ${HOME}/.zkube ]] && { source ${HOME}/.zkube; }
 [[ -f ${HOME}/.zfunc && -r ${HOME}/.zfunc ]] && { source ${HOME}/.zfunc; }
+[[ -f ${HOME}/.zgo && -r ${HOME}/.zgo ]] && { source ${HOME}/.zgo; }
 
 # load secret stuff if available
 [[ -f ${HOME}/.zsecret && -r ${HOME}/.zsecret ]] && { source ${HOME}/.zsecret }
@@ -77,3 +78,4 @@ if [ -f '/home/tom/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/tom
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/tom/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/tom/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 if [ -e /home/tom/.nix-profile/etc/profile.d/nix.sh ]; then . /home/tom/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+

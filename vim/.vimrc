@@ -35,5 +35,4 @@ let g:gruvbox_invert_tabling = 1
 let g:gruvbox_transparent_bg=1
 set background=dark 
 colorscheme gruvbox
-highlight Normal guibg=none
 

@@ -2,3 +2,4 @@
 
 alias vim='nvim'
 alias watch='watch '
+alias xargs='xargs '

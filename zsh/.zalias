@@ -3,3 +3,4 @@
 alias vim='nvim'
 alias watch='watch '
 alias xargs='xargs '
+alias fixfans='sudo systemctl restart isw@MYGS66.service'

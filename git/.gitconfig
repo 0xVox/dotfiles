@@ -98,3 +98,5 @@
 
   # Hurry Up More!
   pso = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
+[pull]
+	rebase = false

@@ -7,4 +7,6 @@ alias xargs='xargs '
 alias fixfans='sudo systemctl restart isw@MYGS66.service'
 alias k='kubectl'
 alias t='terraform'
+alias grep='rg'
+
 

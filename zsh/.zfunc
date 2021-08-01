@@ -14,3 +14,7 @@ starttransfer:  %{time_starttransfer}s\n\
 -------------------------\n\
         total:  %{time_total}s\n" "$@"
 }
+
+ranpass(){
+    cat /dev/urandom | head -n 128 | base64 | sha256sum | awk '{print $1}'
+}

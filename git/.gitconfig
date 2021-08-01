@@ -1,5 +1,5 @@
 [core]
-	editor = vim
+	editor = nvim
 	abbrev = 12
 
 [color]
@@ -49,6 +49,8 @@
 	# amend
 	amend = commit --amend
 
+    # checkout PR
+    co-pr = !sh -c 'git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1' -
 	# branch
 	b = branch -v
 
@@ -96,3 +98,5 @@
 
   # Hurry Up More!
   pso = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
+[pull]
+	rebase = false

@@ -36,7 +36,7 @@ source $ZSH/oh-my-zsh.sh
 
 # export LANG=en_US.UTF-8
 
-export EDITOR=vim
+export EDITOR=nvim
 export VISUAL=$EDITOR
 export PAGER=less
 export TERM='xterm-256color'
@@ -78,3 +78,4 @@ if [ -f '/home/tom/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/tom
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/tom/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/tom/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 if [ -e /home/tom/.nix-profile/etc/profile.d/nix.sh ]; then . /home/tom/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+

@@ -55,11 +55,10 @@ for m in zsh git tmux vim; do
     _stow "$m"
 done
 
+# Vim bits
 
-set -x; cd "$(mktemp -d)" &&
-curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/latest/download/krew.tar.gz" &&
-tar zxvf krew.tar.gz &&
-KREW=./krew-"$(uname | tr '[:upper:]' '[:lower:]')_$(uname -m | sed -e 's/x86_64/amd64/' -e 's/arm.*$/arm/')" &&
-"$KREW" install krew
+# Vim-plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo "If this is your first run - logout and in again to set zsh to default."

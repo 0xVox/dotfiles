@@ -7,7 +7,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term alacritty
+set $term alacritty -e tmux
 set $menu wofi --show run 
 set $lock ~/.local/bin/scripts/lock.sh
 set $background /home/t/Pictures/bg/bliss_bg.jpg
@@ -38,7 +38,7 @@ gaps inner 10
 ### Idle configuration
 # Idle configuration
 exec swayidle -w \
-    timeout 120 'exec $lock' \
+    timeout 300 'exec $lock' \
     before-sleep 'exec $lock'
 ### Key bindings
 #

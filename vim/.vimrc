@@ -38,13 +38,15 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 call plug#end()
 
-let g:gruvbox_contrast_dark = 'soft'
+let g:gruvbox_contrast_dark = 'hard'
 let g:gruvbox_invert_tabling = 1
-let g:gruvbox_transparent_bg=1
-set background=dark 
+let g:gruvbox_transparent_bg = 1
 colorscheme gruvbox
-
 let mapleader = ","
+
+highlight Normal     ctermbg=NONE guibg=NONE
+highlight LineNr     ctermbg=NONE guibg=NONE
+highlight SignColumn ctermbg=NONE guibg=NONE
 
 " vim-go
 let g:go_list_type = "quickfix"

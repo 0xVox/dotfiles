@@ -2,7 +2,7 @@ set autowrite
 set exrc
 set guicursor=
 set relativenumber
-set nu 
+set nu
 set nohlsearch
 set hidden
 set noerrorbells
@@ -214,3 +214,25 @@ autocmd FileType go nmap <leader>b <Plug>(go-build)
 autocmd FileType go nmap <leader>r <Plug>(go-run)
 autocmd FileType go nmap <leader>t <Plug>(go-test)
 
+" Whitespace highlighting
+:highlight ExtraWhitespace ctermbg=darkgreen guibg=lightgreen
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+" Removes trailing spaces
+function TrimWhiteSpace()
+  %s/\s*$//
+  ''
+endfunction
+
+noremap <leader>W :call TrimWhiteSpace()<CR>
+
+" Visual mode remaps
+" remove newlines, join lines basically with no trailing spaces
+xnoremap <leader>J :s/\n//<CR>
+" Create search/replace with selected text
+xnoremap ; y<Esc>:%s/<C-R>"//g<Left><Left>

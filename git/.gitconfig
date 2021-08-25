@@ -51,6 +51,7 @@
 
     # checkout PR
     co-pr = !sh -c 'git fetch origin pull/$1/head:pr/$1 && git checkout pr/$1' -
+	cmp = "!f(){ git checkout $(git main) $@;}; f; git pull"
 	# branch
 	b = branch -v
 
@@ -93,11 +94,14 @@
 	t = tag
     wip = for-each-ref --sort='committerdate:iso8601' --format=' %(color:green)%(committerdate:relative)%09%(color:white)%(refname:short)' refs/heads
 
-  # Hurry up!
-  psom = push --set-upstream origin master
+    # main
+	main = !git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4
 
-  # Hurry Up More!
-  pso = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
+    # Hurry up!
+    psom = push --set-upstream origin master
+
+    # Hurry Up More!
+    pso = "!git push --set-upstream origin \"$(git rev-parse --abbrev-ref HEAD)\""
 [pull]
 	rebase = false
 [init]

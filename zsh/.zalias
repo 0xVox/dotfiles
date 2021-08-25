@@ -9,4 +9,5 @@ alias k='kubectl'
 alias t='terraform'
 alias grep='rg'
 
-
+# Useful jq's
+alias f_taintednodes="jq '.items[] | select(.spec.taints) | { node: .metadata.name, key: .spec.taints[].key, value: .spec.taints[].value }'"

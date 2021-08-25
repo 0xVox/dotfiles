@@ -79,3 +79,8 @@ if [ -f '/home/tom/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/tom
 if [ -f '/home/tom/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/tom/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 if [ -e /home/tom/.nix-profile/etc/profile.d/nix.sh ]; then . /home/tom/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
+
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+    tmux new 
+    exit
+fi

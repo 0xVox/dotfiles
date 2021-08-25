@@ -56,6 +56,7 @@ export QUOTING_STYLE=shell
 [[ -f ${HOME}/.zkube && -r ${HOME}/.zkube ]] && { source ${HOME}/.zkube; }
 [[ -f ${HOME}/.zfunc && -r ${HOME}/.zfunc ]] && { source ${HOME}/.zfunc; }
 [[ -f ${HOME}/.zgo && -r ${HOME}/.zgo ]] && { source ${HOME}/.zgo; }
+[[ -f ${HOME}/.znode && -r ${HOME}/.znode ]] && { source ${HOME}/.znode; }
 
 # load secret stuff if available
 [[ -f ${HOME}/.zsecret && -r ${HOME}/.zsecret ]] && { source ${HOME}/.zsecret }
@@ -81,6 +82,6 @@ if [ -e /home/tom/.nix-profile/etc/profile.d/nix.sh ]; then . /home/tom/.nix-pro
 
 
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-    tmux new 
+    tmux new
     exit
 fi

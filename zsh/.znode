@@ -1,0 +1,4 @@
+# Nodejs
+VERSION=v14.17.5
+DISTRO=linux-x64
+export PATH=/usr/local/lib/nodejs/node-$VERSION-$DISTRO/bin:$PATH

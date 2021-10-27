@@ -1,0 +1,8 @@
+background_opacity: 0.90
+window:
+  decorations: none
+  startup_mode: Windowed
+  window_title: Alacritty
+  dynamic_title: true
+  history: 20000
+

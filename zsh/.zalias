@@ -8,5 +8,7 @@ alias fixfans='sudo systemctl restart isw@MYGS66.service'
 alias k='kubectl'
 alias t='terraform'
 alias grep='rg'
+alias unetbootin="sudo QT_X11_NO_MITSHM=1 unetbootin.elf"
+
 
 

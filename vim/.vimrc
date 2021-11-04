@@ -36,6 +36,8 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
+" Play nicer with tmux
+Plug 'christoomey/vim-tmux-navigator'
 call plug#end()
 
 let g:gruvbox_contrast_dark = 'hard'

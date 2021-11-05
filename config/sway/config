@@ -5,9 +5,10 @@
 # DP-5 Main Monitor
 # DP-4 Right Monitor
 # eDP-1 Laptop Monitor (Off | Under Left Monitor)
+# output DP-3 transform 270
 output DP-3 pos 180 300 res 1600x900@59.978Hz
 output DP-5 pos 1780 0 res 1900x1080@60.000Hz
-output eDP-1 pos 0 1200 res 1900x1080@240.000Hz
+output eDP-1 pos 0 1200 res 1900x1080@60.00Hz
 output DP-4 pos 3700 300 res 1600x900@59.978Hz
 
 ### Variables
@@ -219,7 +220,7 @@ input * {
 # It's good to see the words!
 font pango: SourceCodePro Medium 10
 
-set $mode_system System: (l) lock, (e) logout, (s) suspend, (r) reboot, (S) shutdown, (R) UEFI
+set $mode_system System: (l) lock, (e) logout, (s) suspend, (r) reboot, (S) shutdown, (R) UEFI, (t) Laptop Display
 mode "$mode_system" {
     bindsym l exec $lock, mode "default"
     bindsym e exit
@@ -227,6 +228,7 @@ mode "$mode_system" {
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
     bindsym Shift+r exec --no-startup-id systemctl reboot --firmware-setup, mode "default"
+    bindsym t exec ~/.config/sway/toggle_laptop_display.sh, mode "default"
 
     # return to default mode
     bindsym Return mode "default"

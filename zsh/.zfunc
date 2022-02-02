@@ -19,3 +19,6 @@ ranpass(){
     cat /dev/urandom | head -n 128 | base64 | sha256sum | awk '{print $1}'
 }
 
+tdocs(){
+    docker run --rm --volume "$(pwd):/terraform-docs" -u $(id -u) quay.io/terraform-docs/terraform-docs markdown /terraform-docs > REFERENCE.md
+}

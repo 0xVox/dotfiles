@@ -31,6 +31,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'SirVer/ultisnips'
 Plug 'sheerun/vim-polyglot'
+" NERD
+Plug 'preservim/nerdtree'
 " Telescope bits
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -38,6 +40,8 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 " Play nicer with tmux
 Plug 'christoomey/vim-tmux-navigator'
+" Play nice with your colleagues
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 let g:gruvbox_contrast_dark = 'hard'
@@ -180,7 +184,8 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " Add (Neo)Vim's native statusline support.
 " NOTE: Please see `:h coc-status` for integrations with external plugins that
 " provide custom sttusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+set laststatus=2
+set statusline+=%f
 
 " Mappings for CoCList
 " Show all diagnostics.
@@ -238,3 +243,9 @@ noremap <leader>W :call TrimWhiteSpace()<CR>
 xnoremap <leader>J :s/\n//<CR>
 " Create search/replace with selected text
 xnoremap ; y<Esc>:%s/<C-R>"//g<Left><Left>
+
+
+nnoremap <leader>q :q<CR>
+
+" NERD Mappings
+nnoremap <leader>n :NERDTreeFocus<CR>

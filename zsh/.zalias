@@ -17,3 +17,4 @@ alias f_taintednodes="jq '.items[] | select(.spec.taints) | { node: .metadata.na
 func f_itoname(){
     jq ".items[] | select(.spec.providerID | contains(\"$1\")) | .metadata.name" -r
 }
+

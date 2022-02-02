@@ -48,6 +48,8 @@ gaps inner 10
 
 ### Idle configuration
 # Idle configuration
+# Inhibit Idle if a window is fullscreen
+for_window [class="^.*"] inhibit_idle fullscreen for_window [app_id="^.*"] inhibit_idle fullscreen
 exec swayidle -w \
     timeout 300 'exec $lock' \
     before-sleep 'exec $lock'
@@ -101,6 +103,12 @@ exec swayidle -w \
 #
 # Workspaces:
 #
+    # Bind to monitors when available
+    workspace 1 output eDP-1
+    workspace 2 output DP-3
+    workspace 3 output DP-5
+    workspace 4 output DP-4
+
     # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2

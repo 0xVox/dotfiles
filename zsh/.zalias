@@ -2,7 +2,7 @@
 
 alias vim='nvim'
 alias v='nvim'
-alias watch='watch '
+alias watch='watch --color '
 alias xargs='xargs '
 alias fixfans='sudo systemctl restart isw@MYGS66.service'
 alias k='kubectl'

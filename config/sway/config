@@ -10,6 +10,7 @@ output DP-3 pos 180 300 res 1600x900@59.978Hz
 output DP-5 pos 1780 0 res 1900x1080@60.000Hz
 output eDP-1 pos 0 1200 res 1900x1080@60.00Hz
 output DP-4 pos 3700 300 res 1600x900@59.978Hz
+output HDMI-A-1 pos 1920 1200 res 2560x1440@143.912Hz
 
 ### Variables
 # Logo key. Use Mod1 for Alt.

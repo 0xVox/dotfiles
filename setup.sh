@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # bash 'strict mode'
 #set -euo pipefail
 
@@ -62,3 +61,7 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 echo "If this is your first run - logout and in again to set zsh to default."
+
+
+echo "-----"
+echo "If using neovim, move vimrc to ~/.config/nvim and vim-plug to ~/.config/nvim/autoload"

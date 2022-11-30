@@ -83,3 +83,5 @@ if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
     tmux new
     exit
 fi
+
+export PATH="$PATH:/home/t/.foundry/bin"

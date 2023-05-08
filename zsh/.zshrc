@@ -1,6 +1,3 @@
-if [ -z $DISPLAY ] && [ "$(tty)" == "/dev/tty1" ]; then
-  exec sway
-fi
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -40,7 +37,6 @@ export EDITOR=nvim
 export VISUAL=$EDITOR
 export PAGER=less
 export TERM='xterm-256color'
-eval "$(direnv hook zsh)"
 
 # setup command history
 HISTSIZE=60000
@@ -70,6 +66,8 @@ export QUOTING_STYLE=shell
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+export PATH="$PATH:/Users/t/Library/Python/3.9/bin"
+
 # The next line updates PATH for kubectl krew
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
@@ -85,3 +83,5 @@ if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
     tmux new
     exit
 fi
+
+export PATH="$PATH:/home/t/.foundry/bin"

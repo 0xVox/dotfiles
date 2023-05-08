@@ -1,5 +1,17 @@
 # Read `man 5 sway` for a complete reference.
 
+# Output settings
+# DP-3 Left Monitor
+# DP-5 Main Monitor
+# DP-4 Right Monitor
+# eDP-1 Laptop Monitor (Off | Under Left Monitor)
+# output DP-3 transform 270
+output DP-3 pos 180 300 res 1600x900@59.978Hz
+output DP-5 pos 1780 0 res 1900x1080@60.000Hz
+output eDP-1 pos 0 1200 res 1900x1080@60.00Hz
+output DP-4 pos 3700 300 res 1600x900@59.978Hz
+output HDMI-A-1 pos 1920 1200 res 2560x1440@143.912Hz
+
 ### Variables
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
@@ -8,16 +20,16 @@ set $down j
 set $up k
 set $right l
 set $term alacritty -e tmux
-set $menu wofi --show run 
+set $menu wofi --show run
 set $lock ~/.local/bin/scripts/lock.sh
 set $background /home/t/Pictures/bg/bliss_bg.jpg
 
 ### Output configuration
 output * bg $background fill
 
-set $cl_high #52307cff 
+set $cl_high #52307cff
 set $cl_indi #7c5295cc
-set $cl_back #52307c77  
+set $cl_back #52307c77
 set $cl_fore #ffefff
 set $cl_urge #7c5295
 
@@ -37,6 +49,8 @@ gaps inner 10
 
 ### Idle configuration
 # Idle configuration
+# Inhibit Idle if a window is fullscreen
+for_window [class="^.*"] inhibit_idle fullscreen for_window [app_id="^.*"] inhibit_idle fullscreen
 exec swayidle -w \
     timeout 300 'exec $lock' \
     before-sleep 'exec $lock'
@@ -90,6 +104,12 @@ exec swayidle -w \
 #
 # Workspaces:
 #
+    # Bind to monitors when available
+    workspace 1 output eDP-1
+    workspace 2 output DP-3
+    workspace 3 output DP-5
+    workspace 4 output DP-4
+
     # Switch to workspace
     bindsym $mod+1 workspace number 1
     bindsym $mod+2 workspace number 2
@@ -181,7 +201,7 @@ bindsym $mod+r mode "resize"
 #
 # Read `man 5 sway-bar` for more information about this section.
 bar {
-    swaybar_command waybar 
+    swaybar_command waybar
 }
 
 # Make touchpads great again
@@ -189,6 +209,15 @@ input type:touchpad {
     tap enabled
     natural_scroll enabled
 }
+# Make mice quite nice
+input "5426:92:Razer_Razer_DeathAdder_Elite" {
+    accel_profile flat
+    pointer_accel 0
+    calibration_matrix 8 0 0 0 5 0
+}
+
+
+
 # Annoying focus fuck off
 focus_follows_mouse no
 # British man use british buttons yes
@@ -200,7 +229,7 @@ input * {
 # It's good to see the words!
 font pango: SourceCodePro Medium 10
 
-set $mode_system System: (l) lock, (e) logout, (s) suspend, (r) reboot, (S) shutdown, (R) UEFI
+set $mode_system System: (l) lock, (e) logout, (s) suspend, (r) reboot, (S) shutdown, (R) UEFI, (t) Laptop Display
 mode "$mode_system" {
     bindsym l exec $lock, mode "default"
     bindsym e exit
@@ -208,6 +237,7 @@ mode "$mode_system" {
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
     bindsym Shift+r exec --no-startup-id systemctl reboot --firmware-setup, mode "default"
+    bindsym t exec ~/.config/sway/toggle_laptop_display.sh, mode "default"
 
     # return to default mode
     bindsym Return mode "default"
@@ -226,7 +256,7 @@ bindsym --locked $mod+Page_Down exec playerctl previous
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 
-bindsym --locked $mod+F12 exec grim -t png ~/Pictures/screenshots/$(date -Iseconds).png 
+bindsym --locked $mod+F12 exec grim -t png ~/Pictures/screenshots/$(date -Iseconds).png
 
 # PLease slow down :(
 #input * accel_profile flat

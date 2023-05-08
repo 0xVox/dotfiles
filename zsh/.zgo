@@ -1,3 +1,4 @@
 export GOPATH=$HOME/src
-export GOBIN=/usr/local/go/bin
+export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
+export GODEBUG=asyncpreemptoff=1

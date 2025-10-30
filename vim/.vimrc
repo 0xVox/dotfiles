@@ -58,9 +58,6 @@ let g:gruvbox_transparent_bg = 1
 colorscheme gruvbox
 let mapleader = ","
 
-highlight Normal     ctermbg=NONE guibg=NONE
-highlight LineNr     ctermbg=NONE guibg=NONE
-highlight SignColumn ctermbg=NONE guibg=NONE
 
 " vim-go
 let g:go_list_type = "quickfix"
@@ -210,6 +207,8 @@ noremap <leader>w :w<cr>
 noremap <leader>rv :so ~/.vimrc<cr>
 noremap <leader>t :set background=light<cr>
 noremap <leader>T :set background=dark<cr>
+noremap <leader>o :set guibg=NONE ctermbg=NONE<cr>
+
 
 autocmd FileType go nmap <leader>b <Plug>(go-build)
 autocmd FileType go nmap <leader>r <Plug>(go-run)
@@ -243,3 +242,8 @@ nnoremap <leader>q :q<CR>
 
 " NERD Mappings
 nnoremap <leader>n :NERDTreeFocus<CR>
+
+highlight Normal     ctermbg=NONE guibg=NONE
+highlight LineNr     ctermbg=NONE guibg=NONE
+highlight SignColumn ctermbg=NONE guibg=NONE
+

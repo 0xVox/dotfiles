@@ -44,3 +44,45 @@ sw_theme() {
     esac
 
 }
+
+$ function urldecode() { : "${*//+/ }"; echo -e "${_//%/\\x}"; }
+
+decode_jwt() {
+  local input
+  if [ -t 0 ]; then
+    input="$1"
+  else
+    input="$(cat)"
+  fi
+  jq -R 'split(".") | select(length > 0) | .[0],.[1] | @base64d | fromjson' <<< "$input"
+}
+
+h-get-types() {
+    helm template -f ./values.yaml . | \
+      grep kind: | grep -v " kin" | \
+      sort  | uniq | \
+      awk '{print $2}' | \
+      tr '\n' ',' | \
+      sed 's/.$//'
+}
+
+function helm_get_resources() {
+  # Print header
+  echo -e "KIND\tNAME"
+  # Run helm template and process the output
+  helm template -f ./values.yaml . | awk '
+    BEGIN { FS=": "; in_metadata=0; }
+    # Reset variables when a new document starts
+    /^---/ { kind=""; name=""; in_metadata=0; next; }
+    # Capture the resource kind
+    /^kind: / { kind=$2; }
+    # When entering the metadata section, set a flag
+    /^metadata:/ { in_metadata=1; next; }
+    # When inside metadata, find the name field and print the resource info
+    in_metadata && /^[[:space:]]+name: / {
+      name=$2;
+      print kind "\t" name;
+      in_metadata=0;  # reset metadata flag for this document
+    }
+  '
+}

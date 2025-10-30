@@ -1,3 +1,20 @@
 # Kubernetes Aliases
 
 alias k="/usr/local/bin/kubectl"
+alias kseal="kubeseal --controller-namespace=kpe-secrets --controller-name=sealed-secrets"
+
+func kdebugno(){
+    if [ -z "$1" ]; then
+        echo "usage: nodedbg <node-name>"
+        return 1
+    fi
+
+    POD_NAME="thomasmb-dbg-delete-me-$(date +%s)"
+
+    kubectl run "$POD_NAME" \
+        --namespace=kube-system \
+        --image=ubuntu \
+        --overrides="{\"apiVersion\":\"v1\",\"spec\":{\"nodeName\":\"$1\"}}" \
+        --rm -it \
+        --command -- /bin/bash
+}

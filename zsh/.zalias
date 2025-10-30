@@ -12,10 +12,10 @@ alias grep='rg'
 alias unetbootin="sudo QT_X11_NO_MITSHM=1 unetbootin.elf"
 alias hh="npx hardhat"
 
-
 # Useful jq's
 alias f_taintednodes="jq '.items[] | select(.spec.taints) | { node: .metadata.name, key: .spec.taints[].key, value: .spec.taints[].value }'"
 func f_itoname(){
-    jq ".items[] | select(.spec.providerID | contains(\"$1\")) | .metadata.name" -r
+    jq -r '.items[] | select(.spec.providerID | contains(\"$1\")) | .metadata.name'
 }
+
 

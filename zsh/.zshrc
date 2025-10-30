@@ -1,87 +1,91 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# Install notes
 
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
-export ZSH_DISABLE_COMPFIX="true"
-source $ZSH/oh-my-zsh.sh
+#mkdir -p ~/.zsh/plugins
+#git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/plugins/zsh-autosuggestions
+#git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.zsh/plugins/zsh-syntax-highlighting
+#brew instlal fzf
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-COMPLETION_WAITING_DOTS="true"
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-autosuggestions)
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=23'
-
-
-source $ZSH/oh-my-zsh.sh
-
-# User configuration
-
-# export LANG=en_US.UTF-8
-
+# ----- core env -----
 export EDITOR=nvim
 export VISUAL=$EDITOR
 export PAGER=less
 export TERM='xterm-256color'
 
-# setup command history
+# history
 HISTSIZE=60000
-HISTFILE=${HOME}/.hist/${HOST}
 SAVEHIST=10000
+HISTFILE=${HOME}/.hist/${HOST}
+setopt HIST_IGNORE_ALL_DUPS HIST_IGNORE_SPACE SHARE_HISTORY
 
-# quote names for the shell if they contain shell metacharacters or would cause
-# ambiguous output
-export QUOTING_STYLE=shell
+# ui niceties
+setopt PROMPT_SUBST
+COMPLETION_WAITING_DOTS="true"
 
-# load supplementary configs if available
-[[ -f ${HOME}/.zalias && -r ${HOME}/.zalias ]] && { source ${HOME}/.zalias; }
-[[ -f ${HOME}/.zkube && -r ${HOME}/.zkube ]] && { source ${HOME}/.zkube; }
-[[ -f ${HOME}/.zfunc && -r ${HOME}/.zfunc ]] && { source ${HOME}/.zfunc; }
-[[ -f ${HOME}/.zgo && -r ${HOME}/.zgo ]] && { source ${HOME}/.zgo; }
-[[ -f ${HOME}/.znode && -r ${HOME}/.znode ]] && { source ${HOME}/.znode; }
+# ----- completion system (native zsh) -----
+autoload -Uz compinit
+# speed up compinit; rehash only when needed
+typeset -g -A _compdir_mtimes
+compinit -d ~/.cache/zsh/zcompdump
 
-# load secret stuff if available
-[[ -f ${HOME}/.zsecret && -r ${HOME}/.zsecret ]] && { source ${HOME}/.zsecret }
+# better completion behavior
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' 'r:|[._-]=**'
+zstyle ':completion:*' group-name ''
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-export PATH="$PATH:/Users/t/Library/Python/3.9/bin"
-
-# The next line updates PATH for kubectl krew
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/tom/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/tom/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/tom/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/tom/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-if [ -e /home/tom/.nix-profile/etc/profile.d/nix.sh ]; then . /home/tom/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
-
-if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-    tmux new
-    exit
+# if on mac with homebrew, include site functions (no-op elsewhere)
+if command -v brew >/dev/null 2>&1; then
+  FPATH="$(brew --prefix)/share/zsh/site-functions:$FPATH"
 fi
 
+# ----- autosuggestions -----
+# history-based suggestions (like omz’s plugin, but without omz)
+source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=23'
+# accept suggestion with ctrl-f is nice:
+bindkey '^F' autosuggest-accept
+
+# (optional) syntax highlighting, after everything else
+if [ -f ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
+  source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+fi
+
+# ----- kubectl completion -----
+# base kubectl completion
+if command -v kubectl >/dev/null 2>&1; then
+  source <(kubectl completion zsh)
+  # alias + tie completion to alias
+  alias k='kubectl'
+  compdef k=kubectl
+fi
+
+# ----- your paths (kept) -----
+export PATH="$PATH:/Users/t/Library/Python/3.9/bin"
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+if [ -f '/home/tom/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/home/tom/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/home/tom/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/tom/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -e /home/tom/.nix-profile/etc/profile.d/nix.sh ]; then . /home/tom/.nix-profile/etc/profile.d/nix.sh; fi
 export PATH="$PATH:/home/t/.foundry/bin"
+
+# ----- your dotfile includes (kept) -----
+[[ -r ${HOME}/.zalias ]] && source ${HOME}/.zalias
+[[ -r ${HOME}/.zkube  ]] && source ${HOME}/.zkube
+[[ -r ${HOME}/.zfunc  ]] && source ${HOME}/.zfunc
+[[ -r ${HOME}/.zgo    ]] && source ${HOME}/.zgo
+[[ -r ${HOME}/.znode  ]] && source ${HOME}/.znode
+[[ -r ${HOME}/.zsecret ]] && source ${HOME}/.zsecret
+
+# quoting behavior you wanted
+export QUOTING_STYLE=shell
+
+# fzf search
+eval "$(fzf --zsh)"
+
+# starship prompt
+eval "$(starship init zsh)"
+
+# auto-tmux (kept)
+if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
+  tmux new
+  exit
+fi
+

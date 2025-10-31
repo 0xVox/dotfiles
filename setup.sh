@@ -50,7 +50,7 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 [ ! -d $HOME/.oh-my-zsh ] && RUNZSH=no sh -c "$(curl -fsSL $OMZ)" && rm $HOME/.zshrc
 
 echo "Setting up Symlinks for dotfiles"
-for m in zsh git tmux vim; do
+for m in zsh git tmux vim aerospace; do
     _stow "$m"
 done
 

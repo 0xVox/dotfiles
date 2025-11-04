@@ -117,6 +117,8 @@ automatically-unhide-macos-hidden-apps = true
     alt-shift-left  = ['move-node-to-workspace prev', 'workspace prev']
     alt-shift-right = ['move-node-to-workspace next', 'workspace next']
 
+    alt-up   = 'move-node-to-monitor --focus-follows-window prev'
+    alt-down = 'move-node-to-monitor --focus-follows-window next'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
     alt-1 = 'workspace 1'

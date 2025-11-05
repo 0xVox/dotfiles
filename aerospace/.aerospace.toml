@@ -117,6 +117,9 @@ automatically-unhide-macos-hidden-apps = true
     alt-shift-left  = ['move-node-to-workspace prev', 'workspace prev']
     alt-shift-right = ['move-node-to-workspace next', 'workspace next']
 
+    alt-shift-up   = ['move-node-to-monitor --focus-follows-window --wrap-around next']
+    alt-shift-down = ['move-node-to-monitor --focus-follows-window --wrap-around prev']
+
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
     alt-1 = 'workspace 1'
@@ -124,10 +127,11 @@ automatically-unhide-macos-hidden-apps = true
     alt-3 = 'workspace 3'
     alt-4 = 'workspace 4'
     alt-5 = 'workspace 5'
-   # alt-6 = 'workspace 6'
-   # alt-7 = 'workspace 7'
-   # alt-8 = 'workspace 8'
-   # alt-9 = 'workspace 9'
+    alt-6 = 'workspace 6'
+    alt-7 = 'workspace 7'
+    alt-8 = 'workspace 8'
+    alt-9 = 'workspace 9'
+
    # alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
@@ -164,3 +168,14 @@ automatically-unhide-macos-hidden-apps = true
     down = 'volume down'
     up = 'volume up'
     shift-down = ['volume set 0', 'mode main']
+
+[workspace-to-monitor-force-assignment]
+    1 = 'main'
+    2 = 'main'
+    3 = 'main'
+    4 = 'main'
+    5 = 'main'
+    6 = ['secondary', 'main']
+    7 = ['secondary', 'main']
+    8 = ['secondary', 'main']
+    9 = ['secondary', 'main']

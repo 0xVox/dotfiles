@@ -120,7 +120,6 @@ automatically-unhide-macos-hidden-apps = true
     alt-shift-up   = ['move-node-to-monitor --focus-follows-window --wrap-around next']
     alt-shift-down = ['move-node-to-monitor --focus-follows-window --wrap-around prev']
 
-
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
     alt-1 = 'workspace 1'
     alt-2 = 'workspace 2'
@@ -132,6 +131,10 @@ automatically-unhide-macos-hidden-apps = true
     alt-8 = 'workspace 8'
     alt-9 = 'workspace 9'
 
+   # alt-6 = 'workspace 6'
+   # alt-7 = 'workspace 7'
+   # alt-8 = 'workspace 8'
+   # alt-9 = 'workspace 9'
    # alt-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
